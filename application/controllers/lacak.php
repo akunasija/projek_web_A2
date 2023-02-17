@@ -1,9 +1,10 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Lacak extends CI_Controller {
+class Lacak extends CI_Controller
+{
 
-	
+
 
 	/**
 	 * Index Page for this controller.
@@ -22,7 +23,7 @@ class Lacak extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->view('header');
 		$this->load->view('v_lacak');
 	}
-	 
 }

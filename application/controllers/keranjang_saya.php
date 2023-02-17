@@ -22,6 +22,7 @@ class Keranjang_Saya extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->view('header');
 		$this->load->view('v_keranjang_saya');
 	}
 	 

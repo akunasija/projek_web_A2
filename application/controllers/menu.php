@@ -1,9 +1,17 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Menu extends CI_Controller {
+class Menu extends CI_Controller
+{
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('auth_model');
+		if (!$this->auth_model->current_user()) {
+			redirect(base_url('auth/login'));
+		}
+	}
 
-	
 
 	/**
 	 * Index Page for this controller.
@@ -22,8 +30,10 @@ class Menu extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->model('Menu_model');
+		$data['daftar_menu'] = $this->Menu_model->tampilkanmenu();
+		$data['array_menu'] = $this->Menu_model->tampilkanmenuarray();
 		$this->load->view('header');
-		$this->load->view('v_menu');
+		$this->load->view('v_menu', $data);
 	}
-	 
 }
